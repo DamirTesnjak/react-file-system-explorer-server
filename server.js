@@ -1,4 +1,7 @@
 const http = require('node:http');
+const os = require('os');
+
+const osPlatform = os.platform(); // "win32"
 
 const hostname = '127.0.0.1';
 const port = 3000;
