@@ -1,4 +1,4 @@
-import nodeDiskInfo from './dist/index';
+const nodeDiskInfo = require('node-disk-info');
 
 // GETS INFO ON MOUNTED HARD DRIVES
 function GetDisksInfo() {
@@ -6,7 +6,7 @@ function GetDisksInfo() {
         const disks = nodeDiskInfo.getDiskInfoSync();
         const diskList = [];
         disks.forEach((disk) => {
-            disk.push({
+            diskList.push({
                 filesystem: disk.filesystem,
                 blocks: disk.blocks,
                 used: disk.used,
@@ -21,4 +21,4 @@ function GetDisksInfo() {
     }
 }
 
-export default GetDisksInfo;
+module.exports = GetDisksInfo;

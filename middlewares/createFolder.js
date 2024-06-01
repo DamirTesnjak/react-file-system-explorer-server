@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 
-// HANDLES CREATION OF A NEE FOLDER
+// HANDLES CREATION OF A MEW FOLDER
 function MakeDir(folderPath) {
     try {
         if (!fs.existsSync(folderPath)) { // if folder does not exist

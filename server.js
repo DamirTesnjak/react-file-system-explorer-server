@@ -1,17 +1,24 @@
-const http = require('node:http');
-const os = require('os');
+const GetDisksInfo = require('./middlewares/getDiskInfo');
+const GetFolderContent = require('./middlewares/getFolderContent');
+const express = require('express');
+const bodyParser = require('body-parser')
 
-const osPlatform = os.platform(); // "win32"
-
-const hostname = '127.0.0.1';
+const app = express();
+const jsonParser = bodyParser.json();
 const port = 3000;
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello, World!\n');
-});
+app.post('/getFolder', jsonParser, (req, res) => {
+  console.log('req', req.body);
+  const folderPath = req.body.folderPath;
+  const folderContent = GetFolderContent(folderPath);
+  res.send({ folderContent })
+})
 
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
-}); 
+app.post('/getHardDrives', (req, res) => {
+  const hardDrives = GetDisksInfo()
+  res.send({ hardDrives });
+})
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
