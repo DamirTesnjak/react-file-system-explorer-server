@@ -1,4 +1,4 @@
-import { unlink } from 'node:fs';
+const unlink = require('node:fs');
 
 // HANDLES DELETION OF FILE
 function RemoveFile(path) {
@@ -8,4 +8,4 @@ function RemoveFile(path) {
     });
 }
 
-export default RemoveFile;
+module.exports = RemoveFile;

@@ -1,4 +1,4 @@
-import fs from 'node:fs';
+const fs = require('node:fs');
 
 // DELETES A FOLDER WITH ITS CONTENT
 function DeleteFolder(path) {
@@ -10,4 +10,4 @@ function DeleteFolder(path) {
     });
 };
 
-export default DeleteFolder;
+module.exports = DeleteFolder;

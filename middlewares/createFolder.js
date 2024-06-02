@@ -1,4 +1,4 @@
-import fs from 'node:fs';
+const fs = require('node:fs');
 
 // HANDLES CREATION OF A MEW FOLDER
 function MakeDir(folderPath) {
@@ -11,4 +11,4 @@ function MakeDir(folderPath) {
       }
 }
 
-export default MakeDir;
+module.exports = MakeDir;

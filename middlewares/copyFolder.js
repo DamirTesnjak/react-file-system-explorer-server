@@ -1,4 +1,4 @@
-import fs from 'node:fs';
+const fs = require('node:fs');
 
 // HANDLES COPYING OF FOLDER
 function CopyFolder(oldPath, newPath) {
@@ -15,4 +15,4 @@ function CopyFolder(oldPath, newPath) {
   }
 }
 
-export default CopyFolder;
+module.exports = CopyFolder;

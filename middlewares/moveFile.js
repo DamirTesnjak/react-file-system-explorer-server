@@ -1,5 +1,5 @@
-import CopyFile from './copyFile';
-import RemoveFile from './removeFile';
+const CopyFile = require('./copyFile');
+const RemoveFile = require('./removeFile');
 
 // HANDLES MOVING OF FILE
 function MoveFile(oldPath, newPath) {
@@ -13,4 +13,4 @@ function MoveFile(oldPath, newPath) {
       }
 }
 
-export default MoveFile;
+module.exports = MoveFile;

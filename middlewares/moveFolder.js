@@ -1,5 +1,5 @@
-import CopyFolder from './copyFolder';
-import DeleteFolder from './deleteFolder';
+const CopyFolder = require('./copyFolder');
+const DeleteFolder = require('./deleteFolder');
 
 // HANDLES MOVING FOLDER
 function MoveFolder(oldPath, newPath) {
@@ -13,4 +13,4 @@ function MoveFolder(oldPath, newPath) {
       }
 }
 
-export default MoveFolder;
+module.exports = MoveFolder;

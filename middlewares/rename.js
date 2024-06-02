@@ -1,4 +1,4 @@
-import fs from 'node:fs';
+const fs = require('node:fs');
 
 // RENAMES A FOLDER OR A FILE
 function Rename(pathOld, pathNew) {
@@ -12,4 +12,4 @@ function Rename(pathOld, pathNew) {
   }
 }
 
-export default Rename;
+module.exports = Rename;

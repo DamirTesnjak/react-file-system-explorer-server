@@ -6,20 +6,40 @@ function GetFolderContent(folderPath) {
     const folderContent = [];
     try {
         fileObjs = fs.readdirSync(folderPath, { withFileTypes: true, recursive: false });
+        numOfItems = fileObjs.length;
         fileObjs.forEach((item) => {
           try {
               folderContent.push({ 
-                [!item.name.includes(".") ? 'folder' : 'file']: item, 
-                permission: true,
+                  type: item.name.includes('.') ? 'file' : 'folder',
+                  name: item.name,
+                  parentPath: item.parentPath,
+                  path: item.parentPath + item.name,
+                  size: getItemStats(item.parentPath + item.name),
+                  permission: true,
               });
           } catch (err) {
-            folderContent.push({[!item.name.includes(".") ? 'folder' : 'file']: [], permission: false });
+            folderContent.push({permission: false });
           }
         })
-        return folderContent;
+        return {
+          folderContent,
+          numOfItems,
+        };
       } catch (err) {
-        return folderContent;
+        return {
+          folderContent,
+          numOfItems: 0,
+        };
       }
+}
+
+function getItemStats(path) {
+  try {
+    const stats = fs.statSync(path);
+    return stats.size;
+  } catch {
+    return 0
+  }
 }
 
 module.exports = GetFolderContent;
