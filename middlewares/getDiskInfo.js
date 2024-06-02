@@ -13,6 +13,7 @@ function GetDisksInfo() {
                 available: disk.available,
                 capacity: disk.capacity,
                 mounted: disk.mounted,
+                type: 'disk',
             });
         });
         return diskList

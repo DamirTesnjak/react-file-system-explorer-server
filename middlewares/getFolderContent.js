@@ -12,13 +12,18 @@ function GetFolderContent(folderPath) {
               folderContent.push({ 
                   type: item.name.includes('.') ? 'file' : 'folder',
                   name: item.name,
-                  parentPath: item.parentPath,
-                  path: item.parentPath + item.name,
+                  parentPath: item.parentPath.replace('//', '/'),
+                  path: (item.parentPath + "/" + item.name).replace('//', '/'),
                   size: getItemStats(item.parentPath + item.name),
+                  itemCounts: fs.readdirSync((item.parentPath + "/" + item.name).replace('//', '/'), { withFileTypes: true, recursive: false }).length,
                   permission: true,
               });
           } catch (err) {
-            folderContent.push({permission: false });
+            folderContent.push({
+              name: item.name,
+              path: (item.parentPath + "/" + item.name).replace('//', '/'),
+              permission: false
+            });
           }
         })
         return {
