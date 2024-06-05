@@ -1,5 +1,4 @@
 const fs = require('node:fs');
-const { permission } = require('node:process');
 
 // READS THE CONTENT OF A FOLDER
 function GetFolderContent(folderPath) {

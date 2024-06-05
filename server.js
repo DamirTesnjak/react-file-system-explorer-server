@@ -11,10 +11,16 @@ const OpenFile = require('./middlewares/openFile');
 
 const express = require('express');
 const bodyParser = require('body-parser');
+const os = require('os');
 
 const app = express();
 const jsonParser = bodyParser.json();
 const port = 8080;
+
+app.post('/getUserHomeFolder', jsonParser, (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.send({ homeFolder: os.homedir() });
+})
 
 app.post('/copyFile', jsonParser, (req, res) => {
   res.header("Access-Control-Allow-Origin", "*");
@@ -41,7 +47,6 @@ app.post('/createFolder', jsonParser, (req, res) => {
 
 app.post('/deleteFolder', jsonParser, (req, res) => {
   res.header("Access-Control-Allow-Origin", "*");
-  console.log('req', req.body);
   const folderPath = req.body.path;
   DeleteFolder(folderPath);
   res.send({});
@@ -65,7 +70,6 @@ app.post('/moveFolder', jsonParser, (req, res) => {
 
 app.post('/removeFile', jsonParser, (req, res) => {
   res.header("Access-Control-Allow-Origin", "*");
-  console.log('req', req.body);
   const path = req.body.path;
   RemoveFile(path);
   res.send({});
@@ -81,7 +85,6 @@ app.post('/rename', jsonParser, (req, res) => {
 
 app.post('/getFolder', jsonParser, (req, res) => {
   res.header("Access-Control-Allow-Origin", "*");
-  console.log('req', req.body);
   const folderPath = req.body.folderPath;
   const folderContent = GetFolderContent(folderPath);
   res.send(folderContent)
@@ -89,7 +92,6 @@ app.post('/getFolder', jsonParser, (req, res) => {
 
 app.post('/openFile', jsonParser, (req, res) => {
   res.header("Access-Control-Allow-Origin", "*");
-  console.log('req', req.body);
   const path = req.body.path;
   OpenFile(path);
   res.send({})
