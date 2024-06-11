@@ -11,7 +11,7 @@ function CopyFolder(oldPath, newPath) {
       });
   }
   } catch (err) {
-    console.log(err);
+    return err;
   }
 }
 

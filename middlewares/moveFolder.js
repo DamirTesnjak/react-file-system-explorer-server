@@ -9,7 +9,7 @@ function MoveFolder(oldPath, newPath) {
           DeleteFolder(oldPath);
         }
       } catch (err) {
-        console.error(err);
+        return err;
       }
 }
 

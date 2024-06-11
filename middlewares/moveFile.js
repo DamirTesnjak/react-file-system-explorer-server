@@ -9,7 +9,7 @@ function MoveFile(oldPath, newPath) {
           RemoveFile(oldPath);
         }
       } catch (err) {
-        console.error(err);
+        return err;
       }
 }
 

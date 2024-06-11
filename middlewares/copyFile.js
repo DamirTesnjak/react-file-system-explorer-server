@@ -7,7 +7,7 @@ function CopyFile(oldPath, newPath) {
             fs.copyFileSync(oldPath, newPath, fs.constants.COPYFILE_EXCL);
         }
     } catch (err) {
-        console.log(err);
+        return err;
     }
 }
 

@@ -7,7 +7,7 @@ function MakeDir(folderPath) {
           fs.mkdirSync(folderPath);
         }
       } catch (err) {
-        console.error(err);
+        return err;
       }
 }
 

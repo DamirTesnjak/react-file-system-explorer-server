@@ -17,8 +17,8 @@ function GetDisksInfo() {
             });
         });
         return diskList
-    } catch (e) {
-        console.error(e);
+    } catch (err) {
+        return err;
     }
 }
 

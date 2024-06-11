@@ -1,10 +1,11 @@
-const unlink = require('node:fs');
+const fs = require('node:fs');
 
 // HANDLES DELETION OF FILE
 function RemoveFile(path) {
-    unlink(path, (err) => {
-        if (err) throw err;
-            console.log(path + 'was deleted');
+    fs.unlink(path, (err) => {
+        if (err) {
+            return err;
+        }
     });
 }
 

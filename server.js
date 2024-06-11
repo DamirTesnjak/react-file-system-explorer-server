@@ -26,61 +26,61 @@ app.post('/copyFile', jsonParser, (req, res) => {
   res.header("Access-Control-Allow-Origin", "*");
   const oldPath = req.body.oldPath;
   const newPath = req.body.newPath;
-  CopyFile(oldPath, newPath);
-  res.send({});
+  const err = CopyFile(oldPath, newPath);
+  res.send({ err });
 })
 
 app.post('/copyFolder', jsonParser, (req, res) => {
   res.header("Access-Control-Allow-Origin", "*");
   const oldPath = req.body.oldPath;
   const newPath = req.body.newPath;
-  CopyFolder(oldPath, newPath);
-  res.send({})
+  const err = CopyFolder(oldPath, newPath);
+  res.send({ err })
 })
 
 app.post('/createFolder', jsonParser, (req, res) => {
   res.header("Access-Control-Allow-Origin", "*");
   const folderPath = req.body.folderPath;
-  MakeDir(folderPath);
-  res.send({})
+  const err = MakeDir(folderPath);
+  res.send({ err })
 })
 
 app.post('/deleteFolder', jsonParser, (req, res) => {
   res.header("Access-Control-Allow-Origin", "*");
   const folderPath = req.body.path;
-  DeleteFolder(folderPath);
-  res.send({});
+  const err = DeleteFolder(folderPath);
+  res.send({ err });
 })
 
 app.post('/moveFile', jsonParser, (req, res) => {
   res.header("Access-Control-Allow-Origin", "*");
   const oldPath = req.body.oldPath;
   const newPath = req.body.newPath;
-  MoveFile(oldPath, newPath);
-  res.send({});
+  const err = MoveFile(oldPath, newPath);
+  res.send({ err });
 })
 
 app.post('/moveFolder', jsonParser, (req, res) => {
   res.header("Access-Control-Allow-Origin", "*");
   const oldPath = req.body.oldPath;
   const newPath = req.body.newPath;
-  MoveFolder(oldPath, newPath);
-  res.send({});
+  const err = MoveFolder(oldPath, newPath);
+  res.send({ err });
 })
 
 app.post('/removeFile', jsonParser, (req, res) => {
   res.header("Access-Control-Allow-Origin", "*");
   const path = req.body.path;
-  RemoveFile(path);
-  res.send({});
+  const err = RemoveFile(path);
+  res.send({ err });
 })
 
 app.post('/rename', jsonParser, (req, res) => {
   res.header("Access-Control-Allow-Origin", "*");
   const oldPath = req.body.oldPath;
   const newPath = req.body.newPath;
-  Rename(oldPath, newPath);
-  res.send({})
+  const err = Rename(oldPath, newPath);
+  res.send({ err })
 })
 
 app.post('/getFolder', jsonParser, (req, res) => {
