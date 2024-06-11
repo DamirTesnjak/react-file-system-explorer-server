@@ -7,8 +7,6 @@ This repository only contains the code in NodeJS, which handles the backend part
 <br> of application.
 <br>
 <br>
-To run frontend part of an application, you must download the repository from the link above, install
-<br>and run the project.
 
 Installation: download repository and run the command ```npm i``` in command prompt terminal.
 
