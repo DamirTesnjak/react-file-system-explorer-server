@@ -7,13 +7,13 @@ function GetDisksInfo() {
         const diskList = [];
         disks.forEach((disk) => {
             diskList.push({
+                isDisk: true,
                 filesystem: disk.filesystem,
                 blocks: disk.blocks,
                 used: disk.used,
                 available: disk.available,
                 capacity: disk.capacity,
                 mounted: disk.mounted,
-                type: 'disk',
             });
         });
         return diskList

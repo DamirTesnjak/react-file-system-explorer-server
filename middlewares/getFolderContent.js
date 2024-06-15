@@ -1,4 +1,5 @@
 const fs = require('node:fs');
+const path = require('path');
 
 // READS THE CONTENT OF A FOLDER
 function GetFolderContent(folderPath) {
@@ -8,8 +9,18 @@ function GetFolderContent(folderPath) {
         numOfItems = fileObjs.length;
         fileObjs.forEach((item) => {
           try {
+              const itemPath = (item.parentPath + "/" + item.name).replace('//', '/')
+              const itemStats = fs.statSync(itemPath);
+              const isFolder = itemStats.isDirectory();
+              const isFile = itemStats.isFile();
+              const isSymbolicLink = itemStats.isSymbolicLink()
+
+              const extension = path.extname(itemPath);
+
               folderContent.push({ 
-                  type: item.name.includes('.') ? 'file' : 'folder',
+                  isFolder: extension === '' || isFolder,
+                  isSymbolicLink: isSymbolicLink,
+                  isFile: isFile,
                   name: item.name,
                   parentPath: item.parentPath.replace('//', '/'),
                   path: (item.parentPath + "/" + item.name).replace('//', '/'),

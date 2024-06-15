@@ -6,6 +6,7 @@ const MakeDir = require('./middlewares/createFolder');
 const DeleteFolder = require('./middlewares/deleteFolder');
 const RemoveFile = require('./middlewares/removeFile');
 const MoveFolder = require('./middlewares/moveFolder');
+const MoveFile = require('./middlewares/moveFile');
 const Rename = require('./middlewares/rename');
 const OpenFile = require('./middlewares/openFile');
 
