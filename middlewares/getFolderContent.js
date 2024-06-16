@@ -30,6 +30,7 @@ function GetFolderContent(folderPath) {
               });
           } catch (err) {
             folderContent.push({
+              isFile: true,
               name: item.name,
               path: (item.parentPath + "/" + item.name).replace('//', '/'),
               permission: false
