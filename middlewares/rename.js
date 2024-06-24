@@ -7,7 +7,6 @@ function Rename(pathOld, pathNew) {
       if (err) {
         return err;
       }
-      // done
     });
   }
 }

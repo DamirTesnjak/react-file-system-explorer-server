@@ -23,65 +23,89 @@ app.post('/getUserHomeFolder', jsonParser, (req, res) => {
   res.send({ homeFolder: os.homedir() });
 })
 
-app.post('/copyFile', jsonParser, (req, res) => {
+app.post('/copyFile', jsonParser, (req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   const oldPath = req.body.oldPath;
   const newPath = req.body.newPath;
   const err = CopyFile(oldPath, newPath);
-  res.send({ err });
+  if (err) {
+    next(err)
+  } 
+  res.send({});
 })
 
-app.post('/copyFolder', jsonParser, (req, res) => {
+app.post('/copyFolder', jsonParser, (req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   const oldPath = req.body.oldPath;
   const newPath = req.body.newPath;
   const err = CopyFolder(oldPath, newPath);
-  res.send({ err })
+  if (err) {
+    next(err)
+  }
+  res.send({})
 })
 
-app.post('/createFolder', jsonParser, (req, res) => {
+app.post('/createFolder', jsonParser, (req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   const folderPath = req.body.folderPath;
   const err = MakeDir(folderPath);
-  res.send({ err })
+  if (err) {
+    next(err)
+  } 
+  res.send({})
 })
 
-app.post('/deleteFolder', jsonParser, (req, res) => {
+app.post('/deleteFolder', jsonParser, (req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   const folderPath = req.body.path;
   const err = DeleteFolder(folderPath);
-  res.send({ err });
+  if (err) {
+    next(err)
+  } 
+  res.send({});
 })
 
-app.post('/moveFile', jsonParser, (req, res) => {
+app.post('/moveFile', jsonParser, (req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   const oldPath = req.body.oldPath;
   const newPath = req.body.newPath;
   const err = MoveFile(oldPath, newPath);
-  res.send({ err });
+  if (err) {
+    next(err)
+  } 
+  res.send({});
 })
 
-app.post('/moveFolder', jsonParser, (req, res) => {
+app.post('/moveFolder', jsonParser, (req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   const oldPath = req.body.oldPath;
   const newPath = req.body.newPath;
   const err = MoveFolder(oldPath, newPath);
-  res.send({ err });
+  if (err) {
+    next(err)
+  } 
+  res.send({});
 })
 
-app.post('/removeFile', jsonParser, (req, res) => {
+app.post('/removeFile', jsonParser, (req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   const path = req.body.path;
   const err = RemoveFile(path);
-  res.send({ err });
+  if (err) {
+    next(err)
+  } 
+  res.send({});
 })
 
-app.post('/rename', jsonParser, (req, res) => {
+app.post('/rename', jsonParser, (req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   const oldPath = req.body.oldPath;
   const newPath = req.body.newPath;
   const err = Rename(oldPath, newPath);
-  res.send({ err })
+  if (err) {
+    next(err)
+  } 
+  res.send({})
 })
 
 app.post('/getFolder', jsonParser, (req, res) => {
@@ -94,7 +118,10 @@ app.post('/getFolder', jsonParser, (req, res) => {
 app.post('/openFile', jsonParser, (req, res) => {
   res.header("Access-Control-Allow-Origin", "*");
   const path = req.body.path;
-  OpenFile(path);
+  const err = OpenFile(path);
+  if (err) {
+    next(err)
+  } 
   res.send({})
 })
 
