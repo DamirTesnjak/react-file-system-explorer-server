@@ -115,13 +115,10 @@ app.post('/getFolder', jsonParser, (req, res) => {
   res.send(folderContent)
 })
 
-app.post('/openFile', jsonParser, (req, res, next) => {
+app.post('/openFile', jsonParser, (req, res) => {
   res.header("Access-Control-Allow-Origin", "*");
   const path = req.body.path;
-  const err = OpenFile(path);
-  if (err) {
-    next(err)
-  } 
+  OpenFile(path);
   res.send({})
 })
 
